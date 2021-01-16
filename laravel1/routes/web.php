@@ -16,8 +16,6 @@ Route::get('/', function () {
 });
 
 
-Route::get("register", "FirstController@register");
+Route::get("register", "RegisterController@index");
 
-Route::post("login", "FirstController@post");
-
-Route::get("login", "FirstController@login");
+Route::get("login", "LoginController@index");
