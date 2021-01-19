@@ -1,0 +1,27 @@
+h1 {
+    font-size: 12pt;
+    float: left;
+}
+
+
+ul {
+    list-style: none;
+    width: 400px;
+    margin: 20px auto;
+    border: solid 1px;
+    text-align: center;
+}
+
+li {
+    clear: both;
+}
+
+label {
+    margin-right: 10px;
+    width: 150px;
+    float: left;
+}
+
+.button {
+    margin-top: 20px;
+}
