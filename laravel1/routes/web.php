@@ -20,4 +20,4 @@ Route::get("register", "RegisterController@index");
 
 Route::get("login", "LoginController@index");
 
-Route::post("home", "RegisterController@store");
+Route::post("home", "HomeController@store");
