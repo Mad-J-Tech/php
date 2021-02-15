@@ -18,6 +18,6 @@ Route::get('/', function () {
 
 Route::get("register", "RegisterController@index");
 
-Route::get("login", "LoginController@index");
+Route::post("register", "RegisterController@store");
 
-Route::post("home", "HomeController@store");
+Route::get("login", "LoginController@index");

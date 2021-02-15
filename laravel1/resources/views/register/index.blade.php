@@ -3,7 +3,7 @@
 @section("title", "Register")
 
 @section("form")
-<form action="{{ url('/home')}}" method="POST">
+<form method="POST">
     @csrf
     <li><label for="name">Name</label>
         <input type="text" name="name" id="name">
