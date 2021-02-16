@@ -1,17 +1,6 @@
-<style>
-    a {
-        text-decoration: none;
-        color: #444444;
-    }
-
-    header {
-        display: flex;
-        justify-content: space-between;
-        border-bottom: solid 1px #444444;
-    }
-</style>
-
-
+<head>
+    <link rel="stylesheet" href="{{asset("css/components/header.css")}}">
+</head>
 <header>
     <div class="header-left">
         <a href="{{url("/")}}">Laravel</a>

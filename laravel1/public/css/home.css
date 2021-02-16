@@ -1,0 +1,13 @@
+.container{
+    border: 1px solid #444444;
+    width: 500px;
+    margin:20px auto;
+}
+.contents{
+    text-align: center;
+}
+
+.contents h1{
+    font-size: 12pt;
+    border-bottom: solid 1px #444444;
+}
