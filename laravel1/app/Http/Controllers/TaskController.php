@@ -4,19 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Task;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\TaskRequest;
 
 class TaskController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
         $items = Task::all();
-        return view("task.index", ["items" => $items]);
+        return view("task.index", compact("items"));
     }
 
-    public function store(Request $request)
+    public function store(TaskRequest $request)
     {
-        $this->validate($request, Task::$rules);
         $task = new Task;
         $task->comment = $request->comment;
         $task->save();

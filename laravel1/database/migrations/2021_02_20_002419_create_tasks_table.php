@@ -16,7 +16,7 @@ class CreateTasksTable extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->increments('id');
             $table->string('comment');
-            $table->string('status')->default("作業中");
+            $table->boolean('status')->default("true");
             $table->timestamps();
         });
     }

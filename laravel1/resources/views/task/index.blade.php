@@ -43,7 +43,15 @@
             <tr>
                 <td>{{$item->id}}</td>
                 <td>{{$item->comment}}</td>
-                <td>{{$item->status}}</td>
+                <td>
+                    @php
+                    if($item->status == "true"){
+                    echo "作業中";
+                    }else{
+                    echo "完了";
+                    }
+                    @endphp
+                </td>
                 <td><button class="btn btn-danger"><i class="far fa-trash-alt"></i> 削除</button></td>
             </tr>
             @endforeach
