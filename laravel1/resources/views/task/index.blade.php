@@ -45,7 +45,7 @@
                 <td>{{$item->comment}}</td>
                 <td>
                     @php
-                    if($item->status == "true"){
+                    if($item->status == "false"){
                     echo "作業中";
                     }else{
                     echo "完了";
