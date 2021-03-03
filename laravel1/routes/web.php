@@ -21,3 +21,7 @@ Route::get("register", "RegisterController@index");
 Route::post("register", "RegisterController@store");
 
 Route::get("login", "LoginController@index");
+
+Route::get("task", "TaskController@index");
+
+Route::post("task", "TaskController@store");
