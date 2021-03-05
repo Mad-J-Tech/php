@@ -53,9 +53,9 @@
                     @endphp
                 </td>
                 <td>
-                    <form action="/task/del" method="POST">
+                    <form action="/task/{{$item->id}}" method="POST">
+                        @method("delete")
                         @csrf
-                        <input type="hidden" name="id_del" value={{$item->id}}>
                         <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i> 削除</button>
                     </form>
                 </td>

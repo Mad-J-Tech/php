@@ -24,6 +24,6 @@ Route::get("login", "LoginController@index");
 
 Route::get("task", "TaskController@index");
 
-Route::post("task", "TaskController@create");
+Route::post("task", "TaskController@store");
 
-Route::post("task/del", "TaskController@delete");
+Route::delete("task/{id}", "TaskController@destroy");

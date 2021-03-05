@@ -10,13 +10,14 @@ use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
+
     public function index()
     {
         $items = Task::all();
         return view("task.index", compact("items"));
     }
 
-    public function create(TaskRequest $request)
+    public function store(TaskRequest $request)
     {
         $task = new Task;
         $task->comment = $request->comment;
@@ -24,9 +25,9 @@ class TaskController extends Controller
         return redirect("/task");
     }
 
-    public function delete(Request $request)
+    public function destroy($id)
     {
-        Task::find($request->id_del)->delete();
+        Task::find($id)->delete();
         return redirect("/task");
     }
 }
