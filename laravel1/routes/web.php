@@ -11,6 +11,8 @@
 |
 */
 
+use App\Http\Controllers\TaskController;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -27,3 +29,5 @@ Route::get("task", "TaskController@index");
 Route::post("task", "TaskController@store");
 
 Route::delete("task/{id}", "TaskController@destroy");
+
+Route::put("task/{id}", "TaskController@update");

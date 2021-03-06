@@ -30,4 +30,18 @@ class TaskController extends Controller
         Task::find($id)->delete();
         return redirect("/task");
     }
+
+    public function update($id)
+    {
+        $task = Task::find($id);
+
+        if ($task->status == "false") {
+            $task->status = "true";
+        } elseif ($task->status == "true") {
+            $task->status = "false";
+        }
+
+        $task->save();
+        return redirect("/task");
+    }
 }
