@@ -41,7 +41,7 @@
 
             @foreach($items as $item)
             <tr>
-                <td>{{$item->id}}</td>
+                <td>{{$loop->iteration}}</td>
                 <td>{{$item->comment}}</td>
                 <td>
                     @php
@@ -52,9 +52,16 @@
                     }
                     @endphp
                 </td>
-                <td><button class="btn btn-danger"><i class="far fa-trash-alt"></i> 削除</button></td>
+                <td>
+                    <form action="/task/{{$item->id}}" method="POST">
+                        @method("delete")
+                        @csrf
+                        <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i> 削除</button>
+                    </form>
+                </td>
             </tr>
             @endforeach
+
         </table>
     </div>
 </div>
