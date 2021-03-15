@@ -71,9 +71,9 @@ class TaskController extends Controller
     {
         $task = Task::find($id);
 
-        if ($task->status == "false") {
+        if ($task->status === "false") {
             $task->status = "true";
-        } elseif ($task->status == "true") {
+        } elseif ($task->status === "true") {
             $task->status = "false";
         }
 

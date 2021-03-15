@@ -48,7 +48,7 @@
                         @method("put")
                         @csrf
                         @php
-                        if($item->status == "false"){
+                        if($item->status === "false"){
                         echo '<button type="submit" class="btn btn-warning">作業中</button>';
                         }else{
                         echo '<button type="submit" class="btn btn-success">完了</button>';
