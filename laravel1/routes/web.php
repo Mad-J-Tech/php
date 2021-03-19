@@ -24,4 +24,4 @@ Route::post("register", "RegisterController@store");
 
 Route::get("login", "LoginController@index");
 
-Route::resource("task", "TaskController");
+Route::resource("task", "TaskController", ['only' => ['index', 'create', 'update', 'store', 'destroy']]);
