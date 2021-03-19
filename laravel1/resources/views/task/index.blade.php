@@ -44,13 +44,18 @@
                 <td>{{$loop->iteration}}</td>
                 <td>{{$item->comment}}</td>
                 <td>
-                    @php
-                    if($item->status == "false"){
-                    echo "作業中";
-                    }else{
-                    echo "完了";
-                    }
-                    @endphp
+                    <form action="/task/{{$item->id}}" method="POST">
+                        @method("put")
+                        @csrf
+                        @php
+                        if($item->status === "false"){
+                        echo '<button type="submit" class="btn btn-warning">作業中</button>';
+                        }else{
+                        echo '<button type="submit" class="btn btn-success">完了</button>';
+                        }
+                        @endphp
+
+                    </form>
                 </td>
                 <td>
                     <form action="/task/{{$item->id}}" method="POST">
