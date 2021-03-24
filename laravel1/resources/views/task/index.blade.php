@@ -24,9 +24,9 @@
 <div class="card">
     <div class="card-header">
         <form>
-            <input type="radio" name="status" value="all" checked>すべて
-            <input type="radio" name="status" value="current">作業中
-            <input type="radio" name="status" value="done">完了
+            <input type="radio" name="status" onclick="taskRadio();" value="all">すべて
+            <input type="radio" name="status" onclick="taskRadio();" value="current">作業中
+            <input type="radio" name="status" onclick="taskRadio();" value="done">完了
         </form>
     </div>
 
@@ -40,7 +40,7 @@
             </tr>
 
             @foreach($items as $item)
-            <tr>
+            <tr class="{{$item->status}}">
                 <td>{{$loop->iteration}}</td>
                 <td>{{$item->comment}}</td>
                 <td>
