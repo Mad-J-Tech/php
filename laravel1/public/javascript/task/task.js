@@ -1,9 +1,9 @@
 function taskRadio() {
     radio = document.getElementsByName('status');
 
-    var all = document.querySelectorAll('tr.true, tr.false');
-    var done = document.querySelectorAll('tr.true');
-    var current = document.querySelectorAll('tr.false');
+    const all = document.querySelectorAll('tr.true, tr.false');
+    const done = document.querySelectorAll('tr.true');
+    const current = document.querySelectorAll('tr.false');
 
     if (radio[0].checked) {
         all.forEach(function (elem) {
