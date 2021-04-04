@@ -4,12 +4,13 @@
 @foreach($items as $item)
 <h1>{{$item->title}}</h1>
 <h2>{{$item->message}}</h2>
+<h3>{{$item->getName()}}</h3>
 @if($item->user_id === $myid)
 <form action="/boards/{{$item->id}}/edit" method="GET">
     @csrf
     <button type="submit">編集</button>
 </form>
-<form action="/boards/{{$item->id}}">
+<form action="/boards/{{$item->id}}" method="POST">
     @method('delete')
     @csrf
     <button type="submit">削除</button>

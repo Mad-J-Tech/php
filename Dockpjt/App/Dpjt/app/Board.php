@@ -13,4 +13,8 @@ class Board extends Model
     {
         return $this->belongsTo('App\User');
     }
+    public function getName()
+    {
+        return $this->user->name;
+    }
 }
