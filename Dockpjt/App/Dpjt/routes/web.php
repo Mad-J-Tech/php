@@ -19,4 +19,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/boards/post', 'Boards\BoardController@index');
+Route::resource('/boards', 'Boards\BoardController')->middleware('auth');
