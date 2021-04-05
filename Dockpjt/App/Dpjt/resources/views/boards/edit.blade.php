@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.boards')
 
 @section('content')
 <form action="/boards/{{$item->id}}" method="POST">
