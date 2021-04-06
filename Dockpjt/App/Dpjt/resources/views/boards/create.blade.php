@@ -1,12 +1,19 @@
 @extends('layouts.boards')
 
 @section('content')
-<form action="/boards" method="POST">
-    @csrf
-    <input type="text" name="title">
-    <input type="text" name="message">
-    <button type="submit">新規投稿</button>
+<div class="container">
+    <form action="/boards" method="POST">
+        @csrf
+        <div class="form-group">
+            <label for="title">タイトル</label>
+            <input class="form-control" type="text" name="title">
+        </div>
+        <div class="form-group">
+            <label for="message">コンテンツ</label>
+            <textarea class="form-control" name="message" cols="30" rows="10"></textarea>
+        </div>
+        <button class="btn btn-success" type="submit">新規投稿</button>
 
-</form>
-
+    </form>
+</div>
 @endsection
