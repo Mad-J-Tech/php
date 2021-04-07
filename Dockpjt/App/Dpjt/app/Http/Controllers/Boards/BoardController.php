@@ -6,6 +6,7 @@ use App\Board;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\BoardRequest;
 
 class BoardController extends Controller
 {
@@ -37,7 +38,7 @@ class BoardController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BoardRequest $request)
     {
         $board = new Board;
         $board->user_id = Auth::id();
@@ -77,7 +78,7 @@ class BoardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BoardRequest $request, $id)
     {
         $board = Board::find($id);
         $form = $request->all();

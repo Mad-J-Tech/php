@@ -1,12 +1,25 @@
 @extends('layouts.boards')
 
 @section('content')
-<form action="/boards/{{$item->id}}" method="POST">
-    @method("put")
-    @csrf
-    <input type="text" name="title" value="{{$item->title}}">
-    <textarea name="message" id="" cols="30" rows="10">{{$item->message}}</textarea>
-    <button type="submit">編集完了</button>
-</form>
-
+<div class="container">
+    <form action="" method="POST">
+        @method("put")
+        @csrf
+        @error('title')
+        <p>{{$message}}</p>
+        @enderror
+        <div class="form-group">
+            <label for="title">タイトル</label>
+            <input class="form-control" type="text" name="title" value="{{$item->title}}">
+        </div>
+        @error('message')
+        <p>{{$message}}</p>
+        @enderror
+        <div class="form-group">
+            <label for="message">コンテンツ</label>
+            <textarea class="form-control" name="message" cols="30" rows="10">{{$item->message}}</textarea>
+        </div>
+        <button class="btn btn-success" type="submit">編集完了</button>
+    </form>
+</div>
 @endsection
