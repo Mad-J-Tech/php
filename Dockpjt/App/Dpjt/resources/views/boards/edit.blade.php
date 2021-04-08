@@ -1,14 +1,14 @@
-@extends('layouts.boards')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
-    <form action="" method="POST">
+    <form action="{{route('boards.update', $item->id)}}" method="POST">
         @method("put")
         @csrf
         @error('title')
         <p>{{$message}}</p>
         @enderror
-        <div class="form-group">
+        <div class=" form-group">
             <label for="title">タイトル</label>
             <input class="form-control" type="text" name="title" value="{{$item->title}}">
         </div>

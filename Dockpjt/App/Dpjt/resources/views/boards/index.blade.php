@@ -1,4 +1,4 @@
-@extends('layouts.boards')
+@extends('layouts.app')
 
 @section('content')
 @foreach($items as $item)
@@ -13,13 +13,13 @@
                 </div>
                 @if($item->user_id === $myid)
                 <div class="mr-2 align-self-center">
-                    <form action="/boards/{{$item->id}}/edit" method="GET">
+                    <form action="{{route('boards.edit', $item->id)}}" method="GET">
                         @csrf
                         <button class="btn btn-primary" type="submit">編集</button>
                     </form>
                 </div>
                 <div class="mr-2 align-self-center">
-                    <form action="/boards/{{$item->id}}" method="POST">
+                    <form action="{{route('boards.destroy', $item->id)}}" method="POST">
                         @method('delete')
                         @csrf
                         <button class="btn btn-danger" type="submit">削除</button>
