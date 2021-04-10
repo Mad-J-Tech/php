@@ -38,6 +38,6 @@ class User extends Authenticatable
     ];
     public function board()
     {
-        return $this->hasMany('Board');
+        return $this->hasMany('App\Board');
     }
 }

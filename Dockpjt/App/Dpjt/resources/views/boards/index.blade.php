@@ -9,9 +9,9 @@
             <p class="card-text display-5">{{$item->message}}</p>
             <div class="d-flex justify-content-center">
                 <div class="mr-2 align-self-center">
-                    <p class="my-auto">投稿者：{{$item->getName()}}</p>
+                    <p class="my-auto">投稿者：{{$item->user->name}}</p>
                 </div>
-                @if($item->user_id === $myid)
+                @if($item->user_id === Auth::id())
                 <div class="mr-2 align-self-center">
                     <form action="{{route('boards.edit', $item->id)}}" method="GET">
                         @csrf
