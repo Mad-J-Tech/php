@@ -36,8 +36,43 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
     public function board()
     {
         return $this->hasMany('App\Board');
+    }
+
+    public function likes()
+    {
+        return $this->belongsToMany('App\Like', 'like_user', 'user_id', 'board_id');
+    }
+
+    public function like_exists($boardId)
+    {
+        return $this->likes()->where('board_id', $boardId)->exists();
+    }
+
+    public function like($boardId)
+    {
+        $exist = $this->like_exists($boardId);
+
+        if ($exist) {
+            return false;
+        } else {
+            $this->likes()->attach($boardId);
+            return true;
+        }
+    }
+
+    public function unlike($boardId)
+    {
+        $exist = $this->like_exists($boardId);
+
+        if ($exist) {
+            $this->likes()->detach($boardId);
+            return true;
+        } else {
+            return false;
+        }
     }
 }

@@ -1,11 +1,10 @@
 <?php
 
-use App\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBoardsTable extends Migration
+class CreateLikeUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,11 +13,10 @@ class CreateBoardsTable extends Migration
      */
     public function up()
     {
-        Schema::create('boards', function (Blueprint $table) {
+        Schema::create('like_user', function (Blueprint $table) {
             $table->BigIncrements('id');
-            $table->integer('user_id');
-            $table->string('title');
-            $table->string('message');
+            $table->BigInteger('user_id');
+            $table->BigInteger('like_id');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateBoardsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('boards');
+        Schema::dropIfExists('like_user');
     }
 }

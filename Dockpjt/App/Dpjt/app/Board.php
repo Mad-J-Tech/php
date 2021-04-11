@@ -13,4 +13,9 @@ class Board extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function like_users()
+    {
+        return $this->belongsToMany('App\User', 'like_user', 'board_id', 'user_id');
+    }
 }
