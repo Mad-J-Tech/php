@@ -44,7 +44,7 @@ class User extends Authenticatable
 
     public function likes()
     {
-        return $this->belongsToMany('App\Like', 'like_user', 'user_id', 'board_id');
+        return $this->belongsToMany('App\Like');
     }
 
     public function like_exists($boardId)

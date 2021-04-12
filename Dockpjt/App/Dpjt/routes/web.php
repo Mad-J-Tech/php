@@ -24,7 +24,7 @@ Route::resource('/boards', 'Boards\BoardController', ['only' => ['index', 'creat
 
 Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'boards/{id}'], function () {
-        Route::post('like', 'LikeController@store')->name('likes.like');
-        Route::delete('unlike', 'LikeController@destroy')->name('likes.unlike');
+        Route::post('like', 'Boards\LikeController@store')->name('likes.like');
+        Route::delete('unlike', 'Boards\LikeController@destroy')->name('likes.unlike');
     });
 });
