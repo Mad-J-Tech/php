@@ -29,8 +29,8 @@
                 <div class="mr-2 align-self-center">
                     @if(Auth::id() != $item->user->id)
 
-                    @if(Auth::user()->like_exists($item->id))
-                    <form action="{{route('likes.unlike', $item->id)}}" method="POST">
+                    @if(Auth::user()->like_exists($item->likes->id))
+                    <form action="{{route('likes.unlike', $item->likes->id)}}" method="POST">
                         @method('delete')
                         @csrf
                         <button class="btn" type="submit">
@@ -39,7 +39,7 @@
                     </form>
 
                     @else
-                    <form action="{{route('likes.like', $item->id)}}" method="POST">
+                    <form action="{{route('likes.like', $item->likes->id)}}" method="POST">
                         @csrf
                         <button class="btn" type="submit">
                             <i class="far fa-heart"></i>

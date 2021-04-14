@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Boards;
 
 use App\Board;
+use App\Like;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,7 +18,7 @@ class BoardController extends Controller
      */
     public function index(Request $request)
     {
-        $items = Board::with('user')->get();
+        $items = Board::with('user', 'likes')->get();
         return view('boards.index', compact('items'));
     }
 
