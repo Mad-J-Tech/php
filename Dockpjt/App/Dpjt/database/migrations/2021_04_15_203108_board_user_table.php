@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLikesTable extends Migration
+class BoardUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class CreateLikesTable extends Migration
      */
     public function up()
     {
-        Schema::create('likes', function (Blueprint $table) {
+        Schema::create('board_user', function (Blueprint $table) {
             $table->BigIncrements('id');
-            $table->boolean('push')->default(false);
-            $table->integer('count')->default(0);
             $table->BigInteger('user_id')->unsigned();
             $table->BigInteger('board_id')->unsigned();
             $table->timestamps();
@@ -35,6 +33,6 @@ class CreateLikesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('likes');
+        Schema::dropIfExists('board_user');
     }
 }

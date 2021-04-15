@@ -37,42 +37,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function board()
+    public function favorites()
     {
-        return $this->hasMany('App\Board');
-    }
-
-    public function likes()
-    {
-        return $this->belongsToMany('App\Like');
-    }
-
-    public function like_exists($boardId)
-    {
-        return $this->likes()->where('board_id', $boardId)->exists();
-    }
-
-    public function like($boardId)
-    {
-        $exist = $this->like_exists($boardId);
-
-        if ($exist) {
-            return false;
-        } else {
-            $this->likes()->attach($boardId);
-            return true;
-        }
-    }
-
-    public function unlike($boardId)
-    {
-        $exist = $this->like_exists($boardId);
-
-        if ($exist) {
-            $this->likes()->detach($boardId);
-            return true;
-        } else {
-            return false;
-        }
+        return $this->bolongsToMany('App\Board')->withTimestamps();
     }
 }

@@ -25,29 +25,29 @@
                         <button class="btn btn-danger" type="submit">削除</button>
                     </form>
                 </div>
-                @endif
-                <div class="mr-2 align-self-center">
-                    @if(Auth::id() != $item->user->id)
 
-                    @if(Auth::user()->like_exists($item->likes->id))
-                    <form action="{{route('likes.unlike', $item->likes->id)}}" method="POST">
+                @elseif($item->favorite_users()->where('user_id', Auth::id())->exists())
+                <div class="mr-2 align-self-center">
+                    <form action="{{route('unfavorite', $item->id)}}" method="POST">
                         @method('delete')
                         @csrf
                         <button class="btn" type="submit">
                             <i class="fas fa-heart"></i>
                         </button>
                     </form>
-
-                    @else
-                    <form action="{{route('likes.like', $item->likes->id)}}" method="POST">
+                    <p class="p-auto">{{$item->favorite_users()->count()}}</p>
+                </div>
+                @else
+                <div class="mr-2 align-self-center">
+                    <form action="{{route('favorite', $item->id)}}" method="POST">
                         @csrf
                         <button class="btn" type="submit">
                             <i class="far fa-heart"></i>
                         </button>
                     </form>
-                    @endif
-                    @endif
+                    <p class="p-auto">{{$item->favorite_users()->count()}}</p>
                 </div>
+                @endif
             </div>
         </div>
     </div>

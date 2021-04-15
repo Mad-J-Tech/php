@@ -23,8 +23,8 @@ Route::resource('/boards', 'Boards\BoardController', ['only' => ['index', 'creat
     ->middleware('auth');
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::group(['prefix' => 'boards/{id}'], function () {
-        Route::post('like', 'Boards\LikeController@store')->name('likes.like');
-        Route::delete('unlike', 'Boards\LikeController@destroy')->name('likes.unlike');
+    Route::group(['prefix' => 'boards/{board}'], function () {
+        Route::post('favorite', 'Boards\FavoriteController@store')->name('favorite');
+        Route::delete('unfavorite', 'Boards\FavoriteController@destroy')->name('unfavorite');
     });
 });

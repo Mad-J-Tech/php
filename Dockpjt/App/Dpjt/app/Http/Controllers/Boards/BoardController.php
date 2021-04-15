@@ -18,7 +18,7 @@ class BoardController extends Controller
      */
     public function index(Request $request)
     {
-        $items = Board::with('user', 'likes')->get();
+        $items = Board::with('user')->get();
         return view('boards.index', compact('items'));
     }
 

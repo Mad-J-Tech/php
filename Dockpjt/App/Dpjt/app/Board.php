@@ -14,13 +14,9 @@ class Board extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function likes()
-    {
-        return $this->hasMany('App\Like');
-    }
 
-    public function like_users()
+    public function favorite_users()
     {
-        return $this->belongsToMany('App\User');
+        return $this->belongsToMany('App\User')->withTimestamps();
     }
 }

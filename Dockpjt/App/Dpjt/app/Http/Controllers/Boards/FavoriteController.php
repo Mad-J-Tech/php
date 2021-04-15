@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Boards;
 
-use App\Like;
-use App\User;
+use App\Board;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
-class LikeController extends Controller
+class FavoriteController extends Controller
 {
 
     /**
@@ -17,10 +16,11 @@ class LikeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(Board $board)
     {
-        Auth::user()->like($id);
-        return back();
+        $board->favorite_users()->attach(Auth::id());
+
+        return redirect()->route('boards.index');
     }
 
     /**
@@ -29,9 +29,10 @@ class LikeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Board $board)
     {
-        Auth::user()->unlike($id);
-        return back();
+        $board->favorite_users()->detach(Auth::id());
+
+        return redirect()->route('boards.index');
     }
 }
