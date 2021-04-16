@@ -37,6 +37,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function board()
+    {
+        return $this->hasMany('App\Board');
+    }
+
     public function favorites()
     {
         return $this->bolongsToMany('App\Board')->withTimestamps();
