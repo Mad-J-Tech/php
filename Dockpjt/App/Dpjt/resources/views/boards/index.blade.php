@@ -27,7 +27,7 @@
                 </div>
 
                 @elseif($item->favorite_users()->where('user_id', Auth::id())->exists())
-                <div class="mr-2 align-self-center">
+                <div class="align-self-center">
                     <form action="{{route('unfavorite', $item->id)}}" method="POST">
                         @method('delete')
                         @csrf
@@ -35,17 +35,21 @@
                             <i class="fas fa-heart"></i>
                         </button>
                     </form>
-                    <p class="p-auto">{{$item->favorite_users()->count()}}</p>
+                </div>
+                <div class="align-self-center">
+                    <p class="p-auto m-auto">{{$item->favorite_users()->count()}}</p>
                 </div>
                 @else
-                <div class="mr-2 align-self-center">
+                <div class="align-self-center">
                     <form action="{{route('favorite', $item->id)}}" method="POST">
                         @csrf
                         <button class="btn" type="submit">
                             <i class="far fa-heart"></i>
                         </button>
                     </form>
-                    <p class="p-auto">{{$item->favorite_users()->count()}}</p>
+                </div>
+                <div class="align-self-center">
+                    <p class="p-auto m-auto">{{$item->favorite_users()->count()}}</p>
                 </div>
                 @endif
             </div>
