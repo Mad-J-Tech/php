@@ -21,3 +21,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/boards', 'Boards\BoardController', ['only' => ['index', 'create', 'store', 'edit', 'update', 'destroy']])
     ->middleware('auth');
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::group(['prefix' => 'boards/{board}'], function () {
+        Route::post('favorite', 'Boards\FavoriteController@store')->name('favorite');
+        Route::delete('unfavorite', 'Boards\FavoriteController@destroy')->name('unfavorite');
+    });
+});

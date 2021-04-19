@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Boards;
 
 use App\Board;
+use App\Like;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

@@ -11,7 +11,7 @@
                 <div class="mr-2 align-self-center">
                     <p class="my-auto">投稿者：{{$item->user->name}}</p>
                 </div>
-                @if($item->user_id === Auth::id())
+                @if($item->user->id === Auth::id())
                 <div class="mr-2 align-self-center">
                     <form action="{{route('boards.edit', $item->id)}}" method="GET">
                         @csrf
@@ -25,10 +25,33 @@
                         <button class="btn btn-danger" type="submit">削除</button>
                     </form>
                 </div>
-                @endif
-                <div class="mr-2 align-self-center">
-                    <i class="far fa-heart"></i>
+
+                @elseif($item->favorite_users()->where('user_id', Auth::id())->exists())
+                <div class="align-self-center">
+                    <form action="{{route('unfavorite', $item->id)}}" method="POST">
+                        @method('delete')
+                        @csrf
+                        <button class="btn" type="submit">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                    </form>
                 </div>
+                <div class="align-self-center">
+                    <p class="p-auto m-auto">{{$item->favorite_users()->count()}}</p>
+                </div>
+                @else
+                <div class="align-self-center">
+                    <form action="{{route('favorite', $item->id)}}" method="POST">
+                        @csrf
+                        <button class="btn" type="submit">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </form>
+                </div>
+                <div class="align-self-center">
+                    <p class="p-auto m-auto">{{$item->favorite_users()->count()}}</p>
+                </div>
+                @endif
             </div>
         </div>
     </div>

@@ -13,4 +13,10 @@ class Board extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+
+    public function favorite_users()
+    {
+        return $this->belongsToMany('App\User')->withTimestamps();
+    }
 }
